@@ -11,12 +11,11 @@
 .hero-glow {
   position: absolute;
   top: -68px;
+  right: 6%;
   width: 617px;
   height: 489px;
-  background: radial-gradient(ellipse at center, rgba(43, 110, 253, 0.18) 0%, rgba(43, 110, 253, 0.06) 50%);
   pointer-events: none;
   border-radius: 50%;
-  filter: blur(84px);
 }
 
 .hero-inner {

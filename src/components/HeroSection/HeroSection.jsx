@@ -27,7 +27,9 @@ export default function HeroSection() {
 
         <div className="hero-right fade-in-right" ref={rightRef}>
           <div className="hero-card-wrapper">
-            <div className="hero-glow"></div>
+            <div className="hero-glow">
+              <img src='/Ellipse 1.svg' />
+            </div>
             <div className="hero-bg-card">
               <div className="hero-bg-pattern">
                 <img src="/bg_image.jpg" alt="Background" style={{width: '100%', height: '100%', objectFit: 'cover'}} />

@@ -2,10 +2,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 10px;
   font-family: var(--font);
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0%;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -15,7 +15,7 @@
 }
 
 .btn--lg {
-  padding: 17px 38px;
+  padding: 15px 38px;
   font-size: 14px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #00B4FD 0%, #2563eb 50%, #003ACE 100%);
   color: #fff;
 
   &:hover {

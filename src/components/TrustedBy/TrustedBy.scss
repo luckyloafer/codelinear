@@ -13,9 +13,10 @@
 }
 
 .trusted-label {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0%;
+  line-height: 130%;
   color: var(--text-muted-dark);
   white-space: nowrap;
   flex-shrink: 0;
@@ -33,13 +34,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  opacity: 0.5;
-  transition: opacity 0.25s ease;
-  cursor: default;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 @media (max-width: 1024px) {

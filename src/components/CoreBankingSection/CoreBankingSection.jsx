@@ -23,7 +23,7 @@ export default function CoreBankingSection() {
         </div>
 
         <div className="core-right fade-in-right" ref={rightRef}>
-          <img src="/Frame 90.png" alt="Core banking dashboard" />
+          <img src="/Frame 90.svg" alt="Core banking dashboard" />
         </div>
       </div>
     </section>

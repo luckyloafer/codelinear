@@ -27,7 +27,7 @@ export default function KYCSection() {
     <section className="kyc-section">
       <div className="kyc-inner">
         <div className="kyc-left fade-in-left" ref={leftRef}>
-          <img src="/Frame 99.png" alt="KYC dashboard" />
+          <img src="/Frame 99.svg" alt="KYC dashboard" />
         </div>
 
         <div className="kyc-right fade-in-right" ref={rightRef}>

@@ -23,15 +23,15 @@ export default function SolutionsSection() {
         <div className="solutions-grid fade-in-right" ref={rightRef}>
           {solutions.map((sol, i) => (
             <div key={i} className="solution-card">
-              <div className="solution-icon"><img src={sol.icon} alt={sol.title} /></div>
-              {sol.tag && <span className="solution-tag">{sol.tag}</span>}
+              <div className="solution-icon"><img src={sol.icon} alt={sol.title} /> {sol.tag && <span className="solution-tag">{sol.tag}</span>}</div>
               <h3 className="solution-title">{sol.title}</h3>
               <p className="solution-desc">{sol.description}</p>
-              <a href="#" className="solution-link">LEARN MORE →</a>
+              <a href="#" className="solution-link">LEARN MORE <img src='/3.svg' /></a>
             </div>
           ))}
         </div>
       </div>
+      <div className="glow"></div>
     </section>
   )
 }

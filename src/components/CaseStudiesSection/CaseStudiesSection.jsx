@@ -49,10 +49,9 @@ export default function CaseStudiesSection() {
                 <span className="cs-category">{study.category}</span>
                 <h3 className="cs-title">{study.title}</h3>
                 <div className="cs-brand">
-                  <LightningIcon />
-                  <span>{study.brand}</span>
+                  <img src='logo (4).svg' />
                 </div>
-                <Button variant="outline-dark" href="#" className="cs-read-btn">READ MORE</Button>
+                <Button variant="outline" href="#" className="cs-read-btn">READ MORE</Button>
               </div>
             </div>
           ))}
@@ -74,7 +73,7 @@ export default function CaseStudiesSection() {
             </div>
             <img src='/Frame 106.svg' onClick={next}/>
           </div>
-          <a href="#" className="cs-view-all">VIEW ALL →</a>
+          <a href="#" className="cs-view-alll">VIEW ALL →</a>
         </div>
       </div>
     </section>

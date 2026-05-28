@@ -16,7 +16,7 @@ const ArticleCard = ({ featured = false }) => (
         'How to transition from a traditional to a digital bank'
       </h3>
       <div className="article-meta">David Grohl · 17/08/24</div>
-      <Button variant="outline-dark" href="#">READ MORE</Button>
+      <Button variant="outline" href="#">READ MORE</Button>
     </div>
   </div>
 )
@@ -34,7 +34,7 @@ export default function InsightsSection() {
           <h2 className="insights-heading">
             Get yourself up-to-speed on all the things happening in fintech
           </h2>
-          <Button variant="ghost" href="#" className="insights-cta-btn">INSIGHTS</Button>
+          <Button variant="outline" size='lg' href="#" className="insights-cta-btn">INSIGHTS</Button>
         </div>
 
         <div className="insights-right fade-in-right" ref={rightRef}>

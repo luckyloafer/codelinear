@@ -1,12 +1,12 @@
 import './TrustedBy.scss'
 
 const brands = [
-  { name: 'SHELLS', icon: '/logo.png' },
-  { name: 'SmartFinder', icon: '/logo (1).png' },
-  { name: 'Zoomerr', icon: '/logo (2).png' },
-  { name: 'ArtVenue', icon: '/logo (3).png' },
-  { name: 'kontrastr', icon: '/logo (4).png' },
-  { name: 'WAVESMARATHON', icon: '/logo (5).png' },
+  { name: 'SHELLS', icon: '/logo (2).svg' },
+  { name: 'SmartFinder', icon: '/logo (3).svg' },
+  { name: 'Zoomerr', icon: '/logo (4).svg' },
+  { name: 'ArtVenue', icon: '/logo (5).svg' },
+  { name: 'kontrastr', icon: '/logo (6).svg' },
+  { name: 'WAVESMARATHON', icon: '/logo (7).svg' },
 ]
 
 export default function TrustedBy() {

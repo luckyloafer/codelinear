@@ -84,16 +84,16 @@
 }
 
 .cs-category {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0%;
   color: var(--blue);
   text-transform: uppercase;
 }
 
 .cs-title {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1.25;
   letter-spacing: -0.4px;
   color: var(--text-white);
@@ -112,6 +112,7 @@
 .cs-read-btn {
   align-self: flex-start;
   margin-top: 8px;
+  width: 100%;
 }
 
 .cs-navigation {
@@ -159,29 +160,53 @@
   width: 8px;
   height: 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  border: 1px solid #00B4FD;
+  background: var(--bg-dark);
   cursor: pointer;
   transition: all 0.25s ease;
   padding: 0;
 
   &.active {
     width: 24px;
-    background: var(--blue);
+    background: #0B4B63;
+    border: none;
   }
 }
 
-.cs-view-all {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
+.cs-view-alll {
+  position: relative;
+  display: inline-flex;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 400;
   text-transform: uppercase;
-  transition: color 0.2s;
+  color: #00B4FD;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  align-self: end;
+  margin-top: 8px;
+  cursor: pointer;
+  padding-bottom: 3px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    height: 1px;
+    width: 20%; // initial underline with end gap
+    background-color: #00B4FD;
+
+    transition: width 0.3s ease;
+  }
 
   &:hover {
-    color: #fff;
+    opacity: 0.75;
+
+    &::after {
+      width: 100%; // fills remaining gap
+    }
   }
 }
 

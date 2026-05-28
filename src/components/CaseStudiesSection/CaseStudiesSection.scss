@@ -1,0 +1,265 @@
+.case-studies-section {
+  background: var(--bg-dark);
+  padding: 100px 0;
+}
+
+.cs-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cs-main-heading {
+  font-size: 53px;
+  font-weight: 400;
+  letter-spacing: -1%;
+  line-height: 20%;
+  color: var(--text-white);
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.cs-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 320px;
+}
+
+.cs-card {
+  position: absolute;
+  width: 72%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--border-dark);
+  overflow: hidden;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  will-change: transform, opacity;
+
+  &.pos-active {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 2;
+  }
+
+  &.pos-prev {
+    transform: translateX(-96%);
+    opacity: 0.5;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &.pos-hidden {
+    transform: translateX(110%);
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.cs-card-image {
+  width: 45%;
+  background: linear-gradient(135deg, #0D1527 0%, #0a0f1e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-dark);
+}
+
+.cs-card-content {
+  flex: 1;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.cs-category {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+
+.cs-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  color: var(--text-white);
+  max-width: 420px;
+}
+
+.cs-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cs-read-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.cs-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.cs-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  font-family: var(--font);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.cs-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.cs-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+
+  &.active {
+    width: 24px;
+    background: var(--blue);
+  }
+}
+
+.cs-view-all {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+@media (max-width: 1100px) {
+  .cs-title {
+    font-size: 24px;
+  }
+
+  .cs-card-content {
+    padding: 36px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-studies-section {
+    padding: 80px 0;
+  }
+
+  .cs-inner {
+    padding: 0 24px;
+  }
+
+  .cs-carousel-wrapper {
+    height: 454px;
+  }
+
+  .cs-card {
+    flex-direction: column;
+    width: 80%;
+    height: 420px;
+  }
+
+  .cs-card-image {
+    width: 100%;
+    min-height: 160px;
+    flex-shrink: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .cs-card-content {
+    padding: 28px 24px;
+  }
+
+  .cs-title {
+    font-size: 20px;
+  }
+
+  .cs-main-heading {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-inner {
+    padding: 0 20px;
+  }
+
+  .cs-main-heading {
+    font-size: 26px;
+  }
+
+  .cs-title {
+    font-size: 18px;
+  }
+
+  .cs-carousel-wrapper {
+    height: 494px;
+  }
+
+  .cs-card {
+    width: 85%;
+    height: 460px;
+  }
+
+  .cs-navigation {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+}

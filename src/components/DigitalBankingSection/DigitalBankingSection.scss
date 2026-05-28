@@ -178,6 +178,11 @@
   .digital-heading {
     font-size: 34px;
   }
+
+  .digital-right {
+    margin-top: 0;
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -187,6 +192,11 @@
 
   .digital-sub-two-col {
     gap: 48px;
+  }
+
+  .digital-text-half {
+    width: auto;
+    flex: 1;
   }
 
   .digital-sub-heading {
@@ -209,12 +219,26 @@
   }
 
   .digital-sub-two-col {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
     gap: 40px;
+  }
+
+  .digital-text-half {
+    width: 100%;
+  }
+
+  .digital-phone-half {
+    width: 100%;
   }
 
   .digital-heading {
     font-size: 30px;
+  }
+
+  .v1, .v2, .v3 {
+    display: none;
   }
 }
 

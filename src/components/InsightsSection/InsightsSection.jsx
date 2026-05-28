@@ -1,13 +1,12 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './InsightsSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 const ArticleCard = ({ featured = false }) => (
   <div className={`article-card ${featured ? 'featured-article' : ''}`}>
     {featured && (
       <div className="article-image">
-        <img src="/Frame 54.svg" alt="Article thumbnail" />
+        <img src="/Frame 54.svg" alt="Article thumbnail" loading="lazy" />
       </div>
     )}
     <div className="article-content">
@@ -25,7 +24,14 @@ export default function InsightsSection() {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  useIntersectionObserver([leftRef, rightRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[leftRef, rightRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="insights-section" id="insights">
@@ -43,7 +49,7 @@ export default function InsightsSection() {
             <ArticleCard />
             <ArticleCard />
           </div>
-          <span className="insights-read-all">READ ALL INSIGHTS <img src="/3.svg" alt="" /></span>
+          <span className="insights-read-all">READ ALL INSIGHTS <img src="/3.svg" alt="" loading="lazy" /></span>
         </div>
 
         <div className="glow"></div>

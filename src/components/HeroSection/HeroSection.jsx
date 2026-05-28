@@ -1,13 +1,19 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './HeroSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 export default function HeroSection() {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  useIntersectionObserver([leftRef, rightRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[leftRef, rightRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="hero-section">

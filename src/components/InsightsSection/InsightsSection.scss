@@ -6,6 +6,7 @@
 .insights-inner {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 40px;
   display: grid;
   grid-template-columns: 50fr 60fr;
   gap: 64px;
@@ -229,12 +230,20 @@
       width: 100%;
       min-height: 140px;
     }
+
+    .article-content {
+      width: 100%;
+    }
   }
 
   .article-card:not(.featured-article) {
     flex-direction: column;
 
     .article-image {
+      width: 100%;
+    }
+
+    .article-content {
       width: 100%;
     }
   }

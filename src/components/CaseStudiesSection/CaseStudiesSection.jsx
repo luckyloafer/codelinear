@@ -1,36 +1,44 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './CaseStudiesSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import { caseStudies } from '../../data/caseStudiesData'
-
-const LightningIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-    <path d="M13 2L4.5 13.5H11L10 22L20.5 10H14L13 2Z" fill="#2B6EFD"/>
-  </svg>
-)
 
 export default function CaseStudiesSection() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [leavingSlide, setLeavingSlide] = useState(null)
   const [animating, setAnimating] = useState(false)
   const ref = useRef(null)
   const total = caseStudies.length
 
-  useIntersectionObserver(ref)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    if (ref?.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
 
   const goTo = (index) => {
-    if (animating) return
+    if (animating || index === activeSlide) return
     setAnimating(true)
+    setLeavingSlide(activeSlide)
     setActiveSlide(index)
-    setTimeout(() => setAnimating(false), 550)
+    setTimeout(() => {
+      setLeavingSlide(null)
+      setAnimating(false)
+    }, 600)
   }
 
   const prev = () => goTo((activeSlide - 1 + total) % total)
   const next = () => goTo((activeSlide + 1) % total)
 
   const getCardClass = (index) => {
+    if (index === leavingSlide) return 'pos-leaving'
     if (index === activeSlide) return 'pos-active'
-    if (index === (activeSlide - 1 + total) % total) return 'pos-prev'
+    const behindIndex = (index - activeSlide + total) % total
+    if (behindIndex === 1) return 'pos-behind-1'
+    if (behindIndex === 2) return 'pos-behind-2'
     return 'pos-hidden'
   }
 
@@ -43,13 +51,13 @@ export default function CaseStudiesSection() {
           {caseStudies.map((study, i) => (
             <div key={i} className={`cs-card ${getCardClass(i)}`}>
               <div className="cs-card-image">
-                <img src="/Frame 54.svg" alt={study.brand} />
+                <img src="/Frame 54.svg" alt={study.brand} loading="lazy" />
               </div>
               <div className="cs-card-content">
                 <span className="cs-category">{study.category}</span>
                 <h3 className="cs-title">{study.title}</h3>
                 <div className="cs-brand">
-                  <img src='logo (4).svg' />
+                  <img src='logo (4).svg' loading="lazy" />
                 </div>
                 <Button variant="outline" href="#" className="cs-read-btn">READ MORE</Button>
               </div>
@@ -60,7 +68,7 @@ export default function CaseStudiesSection() {
         <div className="cs-navigation">
           <div></div>
           <div className="cs-nav-left">
-          <img src='/Frame 107.svg' onClick={prev} />
+          <img src='/Frame 107.svg' onClick={prev} loading="lazy" />
             <div className="cs-dots">
               {caseStudies.map((_, i) => (
                 <button
@@ -71,9 +79,9 @@ export default function CaseStudiesSection() {
                 />
               ))}
             </div>
-            <img src='/Frame 106.svg' onClick={next}/>
+            <img src='/Frame 106.svg' onClick={next} loading="lazy" />
           </div>
-          <a href="#" className="cs-view-alll">VIEW ALL →</a>
+          <a href="#" className="cs-view-alll">VIEW ALL <img src="/3.svg" alt="" loading="lazy" /></a>
         </div>
       </div>
     </section>

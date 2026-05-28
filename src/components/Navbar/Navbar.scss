@@ -20,7 +20,7 @@
 .navbar-inner {
   width: fit-content;
   margin: 0 auto;
-  padding: 8px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,6 +222,11 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    width: calc(100% - 32px);
+    margin: 16px auto;
+  }
+
   .navbar-links,
   .nav-cta {
     display: none;
@@ -232,6 +237,9 @@
   }
 
   .navbar-inner {
-    padding: 0 20px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 20px;
+    gap: 0;
   }
 }

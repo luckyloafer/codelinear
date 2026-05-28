@@ -1,6 +1,5 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './KYCSection.scss'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 const leftChecklist = [
   'Customer-On Boarding',
@@ -21,13 +20,20 @@ export default function KYCSection() {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  useIntersectionObserver([leftRef, rightRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[leftRef, rightRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="kyc-section">
       <div className="kyc-inner">
         <div className="kyc-left fade-in-left" ref={leftRef}>
-          <img src="/Frame 99.svg" alt="KYC dashboard" />
+          <img src="/Frame 99.svg" alt="KYC dashboard" loading="lazy" />
         </div>
 
         <div className="kyc-right fade-in-right" ref={rightRef}>
@@ -39,7 +45,7 @@ export default function KYCSection() {
             <ul className="kyc-checklist">
               {leftChecklist.map((item) => (
                 <li key={item} className="kyc-check-item">
-                  <img src="/Frame 15.svg" className="kyc-check-icon" alt="" />
+                  <img src="/Frame 15.svg" className="kyc-check-icon" alt="" loading="lazy" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -47,7 +53,7 @@ export default function KYCSection() {
             <ul className="kyc-checklist">
               {rightChecklist.map((item) => (
                 <li key={item} className="kyc-check-item">
-                  <img src="/Frame 15.svg" className="kyc-check-icon" alt="" />
+                  <img src="/Frame 15.svg" className="kyc-check-icon" alt="" loading="lazy" />
                   <span>{item}</span>
                 </li>
               ))}

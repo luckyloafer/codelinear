@@ -22,10 +22,11 @@
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: 48% 55%;
   gap: 60px;
   align-items: center;
   width: 100%;
+  padding: 0 40px;
 }
 
 .hero-left {

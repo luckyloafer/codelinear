@@ -1,7 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './Footer.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import { footerSolutions, footerN7, footerSocials, addresses } from '../../data/footerData'
 
 const footerNavColumns = [
@@ -14,7 +13,14 @@ export default function Footer() {
   const ctaRef = useRef(null)
   const bodyRef = useRef(null)
 
-  useIntersectionObserver([ctaRef, bodyRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[ctaRef, bodyRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <footer className="footer">
@@ -36,7 +42,7 @@ export default function Footer() {
       <div className="footer-body fade-in" ref={bodyRef}>
         <div className="footer-brand">
           <div className="footer-n7-text">
-            <img src="/Mask group.svg" alt="N7 Banking" />
+            <img src="/Mask group.svg" alt="N7 Banking" loading="lazy" />
           </div>
         </div>
         <div className="footer-addresses">
@@ -58,7 +64,7 @@ export default function Footer() {
                 <li key={item}>
                   <a href="#" className="footer-nav-link">
                     <span>{item}</span>
-                    <span className="nav-arrow">→</span>
+                    <img src="/3.svg" alt="" loading="lazy" />
                   </a>
                 </li>
               ))}

@@ -1,13 +1,19 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './CoreBankingSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 export default function CoreBankingSection() {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  useIntersectionObserver([leftRef, rightRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[leftRef, rightRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="core-section">
@@ -23,7 +29,7 @@ export default function CoreBankingSection() {
         </div>
 
         <div className="core-right fade-in-right" ref={rightRef}>
-          <img src="/Frame 90.svg" alt="Core banking dashboard" />
+          <img src="/Frame 90.svg" alt="Core banking dashboard" loading="lazy" />
         </div>
       </div>
     </section>

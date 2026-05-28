@@ -17,7 +17,7 @@ export default function TrustedBy() {
         <div className="trusted-logos">
           {brands.map((brand) => (
             <div key={brand.name} className="brand-item">
-              <img src={brand.icon} alt={brand.name} />
+              <img src={brand.icon} alt={brand.name} loading="lazy" />
             </div>
           ))}
         </div>

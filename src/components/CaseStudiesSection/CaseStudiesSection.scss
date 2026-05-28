@@ -24,49 +24,67 @@
 
 .cs-carousel-wrapper {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  height: 320px;
+  height: 402px; // 320px card height + 32px for stacked cards peeking below
 }
 
 .cs-card {
   position: absolute;
   width: 72%;
-  right: 0;
+  right: 12%;
   top: 0;
-  height: 100%;
+  height: 320px;
   display: flex;
-  background: var(--bg-card);
+  background: #01141B;
   border-radius: 20px;
   border: 1px solid var(--border-dark);
   overflow: hidden;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease;
   will-change: transform, opacity;
 
+  // Active card: on top, full size
   &.pos-active {
-    transform: translateX(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
-    z-index: 2;
+    z-index: 10;
   }
 
-  &.pos-prev {
-    transform: translateX(-96%);
-    opacity: 0.5;
-    z-index: 1;
+  // First card behind — peeks ~12px below the active card
+  &.pos-behind-1 {
+    transform: scale(0.97);
+    opacity: 0.2;
+    z-index: 9;
     pointer-events: none;
   }
 
+  // Second card behind — peeks a little further below
+  &.pos-behind-2 {
+    transform: scale(1.2);
+    opacity: 0.2;
+    z-index: 8;
+    pointer-events: none;
+  }
+
+  // Cards not yet in the visible stack
   &.pos-hidden {
-    transform: translateX(110%);
+    transform: scale(0.94);
+    opacity: 0.2;
+    z-index: 7;
+    pointer-events: none;
+  }
+
+  // Card that is leaving — fades away while the new active rises over it
+  &.pos-leaving {
+    transform: translateY(4px) scale(0.97);
     opacity: 0;
-    z-index: 0;
+    z-index: 9;
     pointer-events: none;
   }
 }
 
 .cs-card-image {
   width: 45%;
-  background: linear-gradient(135deg, #0D1527 0%, #0a0f1e 100%);
+  background: #01141B;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -230,12 +248,13 @@
   }
 
   .cs-carousel-wrapper {
-    height: 454px;
+    height: 452px;
   }
 
   .cs-card {
     flex-direction: column;
-    width: 80%;
+    width: 86%;
+    right: 7%;
     height: 420px;
   }
 
@@ -274,11 +293,12 @@
   }
 
   .cs-carousel-wrapper {
-    height: 494px;
+    height: 492px;
   }
 
   .cs-card {
-    width: 85%;
+    width: 88%;
+    right: 6%;
     height: 460px;
   }
 

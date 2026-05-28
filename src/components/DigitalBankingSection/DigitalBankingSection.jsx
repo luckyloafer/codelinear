@@ -1,7 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './DigitalBankingSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 
 const CheckCircle = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{flexShrink: 0}}>
@@ -15,7 +14,14 @@ export default function DigitalBankingSection() {
   const ref2 = useRef(null)
   const ref3 = useRef(null)
 
-  useIntersectionObserver([ref1, ref2, ref3])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[ref1, ref2, ref3].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="digital-section" id="digital-banking">
@@ -31,7 +37,7 @@ export default function DigitalBankingSection() {
           </div>
 
           <div className="digital-center">
-            <img src="/iPhone 13 Pro.svg" alt="Digital banking app" />
+            <img src="/iPhone 13 Pro.svg" alt="Digital banking app" loading="lazy" />
           </div>
 
           <div className="digital-right">
@@ -48,7 +54,7 @@ export default function DigitalBankingSection() {
                 'Digitally Connected Core',
               ].map((item) => (
                 <li key={item} className="digital-check-item">
-                  <img src="/Frame 15.svg" alt="" />
+                  <img src="/Frame 15.svg" alt="" loading="lazy" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -71,14 +77,14 @@ export default function DigitalBankingSection() {
                 'Cloud-native With lower TCO',
               ].map((item) => (
                 <li key={item} className="digital-check-item">
-                  <img src="/Frame 15.svg" alt="" />
+                  <img src="/Frame 15.svg" alt="" loading="lazy" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="digital-phone-half">
-            <img src="/iPhone 13 Pro (1).svg" alt="Digital banking app" />
+            <img src="/iPhone 13 Pro (1).svg" alt="Digital banking app" loading="lazy" />
           </div>
         </div>
       </div>
@@ -86,7 +92,7 @@ export default function DigitalBankingSection() {
       <div className="digital-sub digital-sub-3 fade-in" ref={ref3}>
         <div className="digital-sub-inner digital-sub-two-col">
           <div className="digital-phone-half">
-            <img src="/iPhone 13 Pro (2).svg" alt="Digital banking app" />
+            <img src="/iPhone 13 Pro (2).svg" alt="Digital banking app" loading="lazy" />
           </div>
           <div className="digital-text-half">
             <h3 className="digital-sub-heading">No traditional branches</h3>
@@ -109,9 +115,9 @@ export default function DigitalBankingSection() {
         </div>
       </div>
 
-      <img src="/Vector.svg" alt="" className="v1" />
-      <img src="/N7.svg" alt="" className="v2" />
-      <img src="/7.svg" alt="" className="v3" />
+      <img src="/Vector.svg" alt="" className="v1" loading="lazy" />
+      <img src="/N7.svg" alt="" className="v2" loading="lazy" />
+      <img src="/7.svg" alt="" className="v3" loading="lazy" />
     </section>
   )
 }

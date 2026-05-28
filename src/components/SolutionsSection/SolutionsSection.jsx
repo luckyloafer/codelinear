@@ -1,14 +1,20 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import './SolutionsSection.scss'
 import Button from '../ui/Button/Button'
-import { useIntersectionObserver } from '../../hooks/useIntersectionObserver'
 import { solutions } from '../../data/solutionsData'
 
 export default function SolutionsSection() {
   const leftRef = useRef(null)
   const rightRef = useRef(null)
 
-  useIntersectionObserver([leftRef, rightRef])
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    ;[leftRef, rightRef].forEach(ref => { if (ref?.current) observer.observe(ref.current) })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section className="solutions-section" id="solutions">
@@ -23,10 +29,10 @@ export default function SolutionsSection() {
         <div className="solutions-grid fade-in-right" ref={rightRef}>
           {solutions.map((sol, i) => (
             <div key={i} className="solution-card">
-              <div className="solution-icon"><img src={sol.icon} alt={sol.title} /> {sol.tag && <span className="solution-tag">{sol.tag}</span>}</div>
+              <div className="solution-icon"><img src={sol.icon} alt={sol.title} loading="lazy" /> {sol.tag && <span className="solution-tag">{sol.tag}</span>}</div>
               <h3 className="solution-title">{sol.title}</h3>
               <p className="solution-desc">{sol.description}</p>
-              <a href="#" className="solution-link">LEARN MORE <img src='/3.svg' /></a>
+              <a href="#" className="solution-link">LEARN MORE <img src='/3.svg' loading="lazy" /></a>
             </div>
           ))}
         </div>

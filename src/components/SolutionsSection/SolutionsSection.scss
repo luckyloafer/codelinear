@@ -8,6 +8,7 @@
 .solutions-inner {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   gap: 80px;
@@ -146,12 +147,20 @@
 
 @media (max-width: 1100px) {
   .solutions-inner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 48px;
+    padding: 0 40px;
   }
 
   .solutions-left {
     position: static;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .solutions-grid {
+    max-width: 100%;
+    width: 100%;
   }
 
   .solutions-heading {
